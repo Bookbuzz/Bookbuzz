@@ -14,7 +14,14 @@ const BookClubPage = props => (
     <div className="row">
       <div className="col s12 m12 rounded">
         <p> All Discussion</p>
-        <div>{props.discussion}</div>
+        <div id="disc">{props.Discussion.forEach(function(each) {
+            // console.log(each)  
+           document.getElementById("disc").append(each)
+          
+          
+          }
+           )
+           }</div>
       </div>
 
       <div className="col s12 m12 rounded">
@@ -27,7 +34,6 @@ const BookClubPage = props => (
               className="form-control"
               id="postDiscussion"
               aria-describedby="disc help"
-              // value={this.state.value}
               onChange={props.handleDiscussionChange}
               placeholder="Post a comment or discussion here"
             />

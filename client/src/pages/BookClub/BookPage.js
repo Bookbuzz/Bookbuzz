@@ -57,7 +57,7 @@ class BookClub extends Component {
   discussionHandler = (event) => {
     event.preventDefault();
    
-    alert("Hello! We will post the comment");
+    // alert("Hello! We will post the comment");
 
     let clubChangeData = {
       clubid: this.state.clubid,
