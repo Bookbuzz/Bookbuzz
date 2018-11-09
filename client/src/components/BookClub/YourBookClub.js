@@ -1,66 +1,57 @@
 import React from "react";
+import DiscussionItem from "../../components/BookClub/discussionItem";
 
- const BookClubPage = (props) =>(
-   
-  <div  id={props.clubId}>
-  <h3 > <strong>{props.Club}</strong></h3>
-  <h5>Book: {props.bookName}</h5>
-  
-  <p> {props.Date}</p>
- </div>
+const BookClubPage = props => (
+  <div className="rounded" id={props.clubId}>
+    <h3>
+      {" "}
+      <strong>{props.Club}</strong>
+    </h3>
+    <h5>Book: {props.Book}</h5>
+    <h5>
+      <strong>Meeting: {props.Date} </strong>{" "}
+    </h5>
+<hr/><hr/><hr/><hr/>
 
- );
+    <div className="row">
+      <div className="col s12 m12 rounded">
+        <br />
+        <h4> All Discussion</h4>
 
+        <div id="disc1">
+          {props.Discussion.map(element => {
+            return (
+              // console.log(element)
+              <DiscussionItem discId={element} discussion={element} />
+            );
+          })}
+        </div>
+      </div>
 
- export default BookClubPage;
- 
+      <div className="col s12 m12 rounded">
+        <form id="myForm" onSubmit={event => props.action(event)}>
+          <label htmlFor="discussionadd">Post Discussion</label>
+          <input
+            type="textbox"
+            name="discussionadd"
+            className="form-control"
+            id="postDiscussion"
+            aria-describedby="disc help"
+            required="required"
+            onChange={props.handleDiscussionChange}
+            placeholder="Post a comment or discussion here"
+          />
+          <br/>
+          <input
+            type="submit"
+            value="Post Now!"
+            className="btn buttonClubCreate"
+          />
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+);
 
-
-//   render() {
-//     return (
-//       <div className="rounded" style={{ background: "	" }}>
-//         <h4>Book Club Name Comes Here</h4>
-//         <div className="row">
-//           <button className="buttonClubCreate">Club Info</button> {`         `}
-//           <button className="buttonClubCreate">Book Info</button> {`         `}
-//           <button className="buttonClubCreate">Discussion</button>
-//         </div>
-//         <div className="row">
-//           <div
-//             className="col s6 m6 rounded"
-//             style={{background: "light blue", color: "#8b4513"}}
-//           >
-//             <p style={{color: "black"}}> Welcome to Discussion Page </p>
-
-//             <div style={{color: "pink"}}>
-             
-
-//               <form>
-//                 <div className="form-group">
-//                   <label htmlFor="postDiscussion">Post Discussion</label>
-//                   <input
-//                     type="textbox"
-//                     name="postDiscussion"
-//                     className="form-control"
-//                     id="postDiscussion"
-//                     aria-describedby="disc help"
-//                     placeholder="Post a comment or discussion here"
-//                     // onChange={this.handleUsernameChanged.bind(this)}
-//                   />
-//                 </div>
-//                 <br />
-
-//                 <input
-//                   type="submit"
-//                   value="Post Now!"
-//                   className="btn buttonClubCreate"
-//                 />
-//               </form>
-//               <br />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+export default BookClubPage;

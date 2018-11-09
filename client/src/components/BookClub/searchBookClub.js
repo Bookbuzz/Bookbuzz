@@ -2,6 +2,7 @@ import React from "react";
 import "../styles.css";
 import myAPI from "../../utils/API";
 import SearchResultItem from "../../components/BookClub/searchResultItem";
+
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // import Button from './Button/Button';
@@ -50,7 +51,7 @@ export default class SearchClubForm extends React.Component {
     myAPI
       .searchAllClubs(clubChangeData)
       .then(res =>
-        res.data.forEach(function(element) {
+          (function(element) {
           // console.log(element.clubMembers);
           console.log(element);
 
@@ -64,9 +65,7 @@ export default class SearchClubForm extends React.Component {
 
           element.clubMembers.forEach(function(e) {
             console.log(e);
-            // localStorage.id_token === e
-            //   ? alert("You are already a member!")
-            //   : addClub();
+            
 
             if (localStorage.id_token === e) {
               alert("You are already a member!");
@@ -84,13 +83,6 @@ export default class SearchClubForm extends React.Component {
   };
 
   goToClub = (event, id) => {
-
-    // console.log(document.location.href)
-
-    // console.log("goToClub", id);
-
-    //if local store is a member o that club, then process to a route
-    //else local storage user not a member, alert ("not a member, join first!");
 
     let clubQuery = {
       clubid: id,
@@ -124,13 +116,6 @@ export default class SearchClubForm extends React.Component {
       )
       .catch(err => console.log(err));
   };
-
-
-
-
-
-
-
 
 
   handleSubmit(event) {
