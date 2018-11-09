@@ -64,6 +64,10 @@ class BookClub extends Component {
     .then(res => console.log(res))
     .catch(err => console.log(err));
 
+    
+      window.location.reload(); 
+  
+
   };
 
   render() {
