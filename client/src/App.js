@@ -39,8 +39,8 @@ const App = () => (
         <Route exact path="/callback" component={Profile} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
-        <Route path="/bookclub" component={BookClub} />
-        <Route path="/yourbookclub/" component={YourBookClub} />
+        <Route exact path="/bookclub" component={BookClub} />
+        <Route path="/bookclub/:id" component={YourBookClub} />
         <Route exact path="/home" component={Search} />
         <Route exact path="/saved" component={SavedBooks} />
         <Route exact path="/profile" component={Profile} />
@@ -56,12 +56,10 @@ let username = "";
 let auth0UserId = "";
 
 if (auth.isAuthenticated()) {
-
-  name = auth.getProfile().given_name || auth.getProfile() || "friend";
+  name = auth.getProfile().given_name  || "friend";
   profileImage = auth.getProfile().picture || "";
   username = auth.getProfile().nickname || "";
   auth0UserId = auth.getProfile().sub || "";
-
 }
 
 let initialState = {

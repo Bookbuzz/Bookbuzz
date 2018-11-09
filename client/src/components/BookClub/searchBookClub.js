@@ -3,7 +3,7 @@ import "../styles.css";
 import myAPI from "../../utils/API";
 import SearchResultItem from "../../components/BookClub/searchResultItem";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Link} from "react-router-dom";
+
 // import Button from './Button/Button';
 // import BookClubPage from "./YourBookClub";
 
@@ -17,8 +17,7 @@ export default class SearchClubForm extends React.Component {
       searchByBookNameByBook: "",
 
       clubid: "",
-      useradd: "",
-      clubUrl: ""
+      useradd: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -72,7 +71,7 @@ export default class SearchClubForm extends React.Component {
             if (localStorage.id_token === e) {
               alert("You are already a member!");
             } else {
-              alert("adding you to the club");
+              alert("Adding you to the club");
               myAPI
                 .updateClubs(clubChangeData)
                 .then(res => console.log(res))
@@ -86,17 +85,8 @@ export default class SearchClubForm extends React.Component {
 
   goToClub = (event, id) => {
 
-    console.log(document.location.href)
+    // console.log(document.location.href)
 
-   const urlCheck = () => {
-      if (this.state.clubUrl == true) {
-      return ("/home") 
-      } else {
-        return ("#")
-      }
-    }
-
-    // this.href="http://www.google.coms"
     // console.log("goToClub", id);
 
     //if local store is a member o that club, then process to a route
@@ -124,14 +114,10 @@ export default class SearchClubForm extends React.Component {
             if (clubQuery.useradd === e) {
               alert("going to club page!!! woot woot");
               // take to the club ID LINK and pass ID as props
-              this.setState({clubUrl: true});
-              urlCheck();
-
+             
             } else {
               alert("Join the club first!");
-              this.setState({clubUrl: false});
-              urlCheck();
-
+             
             }
           });
         })
