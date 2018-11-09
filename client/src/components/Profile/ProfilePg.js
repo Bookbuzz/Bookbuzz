@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import Card from "../Card/card";
 import BookScraped from "../BookScraped/BookScraped";
-
+import Book from "./image/book.jpeg";
 import myAPI from "../../utils/API";
 
 class Profile extends Component {
@@ -34,18 +34,18 @@ class Profile extends Component {
       saved = this.state.savedBooks.map((book, index) => {
         console.log(book);
         return (
-          
-            <BookScraped
-              key={book._id}
-              bookId={book._id}
-              title={book.title}
-              author={book.author}
-              URL={book.URL}
-              preview={book.preview}
-              action={this.deleteBooksHandler}
-              saveTitle="Delete from saved"
-            />
-         
+
+          <BookScraped
+            key={book._id}
+            bookId={book._id}
+            title={book.title}
+            author={book.author}
+            URL={book.URL}
+            preview={book.preview}
+            action={this.deleteBooksHandler}
+            saveTitle="Delete from saved"
+          />
+
         );
       });
     }
@@ -54,19 +54,31 @@ class Profile extends Component {
 
     return (
       <div>
+        {/* <hr />
         <hr />
-        <hr />
-        <hr />
+        <hr /> */}
+        <h1 className="text-center">Welcome Back</h1>
+        <img src={Book} />
+        <div className="card">
+          <div className="card-body">
+            <h1>Saved Clubs</h1>
+            <br />
+            {savedClubs}
+          </div>
 
-      <h1>Saved Clubs</h1>
-        <br/>
-        {savedClubs}
-<br/>
+        </div>
 
+        <br />
 
+        <div className="card">
+        <div  className="card-body">
         <h1>Saved Books</h1>
-        <br/>
+        <br />
         {saved}
+        </div>
+        </div>
+
+        
       </div>
     );
   }
