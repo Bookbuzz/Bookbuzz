@@ -23,25 +23,17 @@ class Home extends Component {
               lovers to come together and connect.
             </p>
           </div>
-          <center>
-            <div className="stack">
-              <div className="book" />
-              <div className="book" />
-              <div className="book" />
-              <div className="book" />
-              <div className="book" />
-            </div>
-          </center>
+          
 
           <hr />
           <hr />
           <hr />
           <hr />
+          {/* <hr />
           <hr />
           <hr />
           <hr />
-          <hr />
-          <hr />
+          <hr /> */}
 
           <h3 className="text-center">Our Developers</h3>
           <About />

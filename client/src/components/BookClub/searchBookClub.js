@@ -3,7 +3,7 @@ import "../styles.css";
 import myAPI from "../../utils/API";
 import SearchResultItem from "../../components/BookClub/searchResultItem";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { Link} from "react-router-dom";
+
 // import Button from './Button/Button';
 // import BookClubPage from "./YourBookClub";
 
@@ -71,7 +71,7 @@ export default class SearchClubForm extends React.Component {
             if (localStorage.id_token === e) {
               alert("You are already a member!");
             } else {
-              alert("adding you to the club");
+              alert("Adding you to the club");
               myAPI
                 .updateClubs(clubChangeData)
                 .then(res => console.log(res))

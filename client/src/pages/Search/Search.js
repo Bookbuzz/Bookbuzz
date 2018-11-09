@@ -98,6 +98,16 @@ class Search extends Component {
         <hr />
         <Wrapper>
         <Card title="Search for Books">
+        <center>
+            <div className="stack">
+              <div className="book" />
+              <div className="book" />
+              <div className="book" />
+              <div className="book" />
+              <div className="book" />
+            </div>
+          </center>
+          <br></br>
         <SearchForm 
           submit={this.handleFormSubmit} 
           changed={this.handleInputChange}
