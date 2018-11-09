@@ -10,12 +10,12 @@ class BookClub extends Component {
       clubid: this.props.match.params.id,
       bookName: "",
       clubName: "",
-      meetingDate:""
+      meetingDate: "",
+      discussions: []
     };
   }
 
   componentDidMount() {
-  
     this.myclubfunction();
   }
 
@@ -24,26 +24,24 @@ class BookClub extends Component {
       clubid: this.state.clubid
     };
 
-
-    // console.log(this.state.clubid);
-
     myAPI
       .searchAllClubs(clubChangeData)
       .then(res =>
         // console.log(res.data[0]),
-
         this.setState({
           bookName: res.data[0].bookName,
-          clubName :res.data[0].clubName,
-          meetingDate :res.data[0].meetingDate
+          clubName: res.data[0].clubName,
+          meetingDate: res.data[0].meetingDate,
+          discussions: res.data[0].discussions
         })
-
-        
       )
       .catch(err => console.log(err));
-    
   };
 
+  discussionHandler = (event) => {
+    event.preventDefault();
+    alert("Hello!");
+  };
 
   render() {
     return (
@@ -59,8 +57,8 @@ class BookClub extends Component {
             Book={this.state.bookName}
             Club={this.state.clubName}
             Date={this.state.meetingDate}
-            // ClubName={element.clubName}
-
+            Discussion={this.state.discussions}
+            action={this.discussionHandler}
             //pass the id of the clubpage
           />
         </Wrapper>
