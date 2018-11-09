@@ -50,7 +50,7 @@ export default class SearchClubForm extends React.Component {
     myAPI
       .searchAllClubs(clubChangeData)
       .then(res =>
-        res.data.forEach(function(element) {
+          (function(element) {
           // console.log(element.clubMembers);
           console.log(element);
 
@@ -64,9 +64,7 @@ export default class SearchClubForm extends React.Component {
 
           element.clubMembers.forEach(function(e) {
             console.log(e);
-            // localStorage.id_token === e
-            //   ? alert("You are already a member!")
-            //   : addClub();
+            
 
             if (localStorage.id_token === e) {
               alert("You are already a member!");

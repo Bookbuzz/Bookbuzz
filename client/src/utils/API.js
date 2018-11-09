@@ -15,15 +15,15 @@ export default {
       return axios.delete("/api/books/" + id);
     },
     saveBooks: function(BookData) {
-      console.log("inside the save article in API js");
+      // console.log("inside the save article in API js");
       return axios.post("/api/books/", BookData);
     },
     postClubs: function(ClubData){
-      console.log("inside the postclubs in API js");
+      // console.log("inside the postclubs in API js");
       return axios.post("/api/bookclubs/", ClubData);
     },
     getClubs: function(){
-      console.log("inside the getClubs in API js");
+      // console.log("inside the getClubs in API js");
       return axios.get("/api/bookclubs/");
     },
     searchAllClubs: function(data){
@@ -37,7 +37,11 @@ export default {
       return axios.post('/api/bookclubs/search2', info);
     },
     updateClubs: function(clubChangeData){
-      console.log("inside the getclubs in API js", clubChangeData);
+      // console.log("inside the getclubs in API js", clubChangeData);
       return axios.post("/api/bookclubs/addClub", clubChangeData);
+    },
+    updateDiscussions: function(clubChangeData){
+      // console.log("inside the getclubs in API js", clubChangeData);
+      return axios.post("/api/bookclubs/discussionadd", clubChangeData);
     }
   };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import YourBookClub from "../../components/BookClub/YourBookClub"; // will be removed from here to its page
 import Wrapper from "../../components/Wrapper";
 import myAPI from "../../utils/API";
+// import { throws } from "assert";
 
 class BookClub extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class BookClub extends Component {
       bookName: "",
       clubName: "",
       meetingDate: "",
-      discussions: []
+      discussions: [],
+      discussionadd: ""
     };
   }
 
@@ -38,9 +40,34 @@ class BookClub extends Component {
       .catch(err => console.log(err));
   };
 
+  
+  handleDiscussionChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+
+    
+  }
+
   discussionHandler = (event) => {
     event.preventDefault();
-    alert("Hello!");
+   
+    alert("Hello! We will post the comment");
+
+    let clubChangeData = {
+      clubid: this.state.clubid,
+      discussionadd: this.state.discussionadd
+    };
+
+    myAPI.updateDiscussions(clubChangeData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
   };
 
   render() {
@@ -59,6 +86,7 @@ class BookClub extends Component {
             Date={this.state.meetingDate}
             Discussion={this.state.discussions}
             action={this.discussionHandler}
+            handleDiscussionChange={this.handleDiscussionChange}
             //pass the id of the clubpage
           />
         </Wrapper>

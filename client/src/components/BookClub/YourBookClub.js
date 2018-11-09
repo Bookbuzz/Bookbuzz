@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 const BookClubPage = props => (
   <div className="rounded" id={props.clubId}>
     <h3>
@@ -16,30 +14,30 @@ const BookClubPage = props => (
     <div className="row">
       <div className="col s12 m12 rounded">
         <p> All Discussion</p>
+        <div>{props.discussion}</div>
       </div>
 
       <div className="col s12 m12 rounded">
-        <form>
-          <div className="form-group">
-            <label htmlFor="postDiscussion">Post Discussion</label>
+        <form  id="myForm" onSubmit={(event) => props.action(event)}>
+         
+            <label htmlFor="discussionadd">Post Discussion</label>
             <input
               type="textbox"
-              name="postDiscussion"
+              name="discussionadd"
               className="form-control"
               id="postDiscussion"
               aria-describedby="disc help"
+              // value={this.state.value}
+              onChange={props.handleDiscussionChange}
               placeholder="Post a comment or discussion here"
-              // onChange={this.handleUsernameChanged.bind(this)}
             />
-          </div>
-          <br />
-
-          <input
+               <input
             type="submit"
             value="Post Now!"
             className="btn buttonClubCreate"
-            onClick={(event) => props.action(event, props.discussions)}
+           
           />
+          <br />
         </form>
       </div>
     </div>
@@ -47,30 +45,3 @@ const BookClubPage = props => (
 );
 
 export default BookClubPage;
-
-//   render() {
-//     return (
-//       <div className="rounded" style={{ background: "	" }}>
-//         <h4>Book Club Name Comes Here</h4>
-//         <div className="row">
-//           <button className="buttonClubCreate">Club Info</button> {`         `}
-//           <button className="buttonClubCreate">Book Info</button> {`         `}
-//           <button className="buttonClubCreate">Discussion</button>
-//         </div>
-//         <div className="row">
-//           <div
-//             className="col s6 m6 rounded"
-//             style={{background: "light blue", color: "#8b4513"}}
-//           >
-//             <p style={{color: "black"}}> Welcome to Discussion Page </p>
-
-//             <div style={{color: "pink"}}>
-
-//               <br />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }

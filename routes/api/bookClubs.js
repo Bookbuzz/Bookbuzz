@@ -50,17 +50,22 @@ router.post('/search2', function(req, res){
 
 router.post('/addClub', function(req, res){
   // console.log(req.body.searchClubName, "This is the search object in bookclub.js *%%*&%^E*^E");
-  console.log(req.body, "This is the search object in bookclub.js in line 40 bookclub.js");
-  
+  // console.log(req.body, "This is the search object in bookclub.js in line 40 bookclub.js");
   db.Club.findOneAndUpdate({_id: req.body.clubid},{"$push": { "clubMembers": req.body.useradd }})
 
   .then(result => {
     // console.log( "line 34", result);
     res.send(result);
   })
+});
 
+router.post('/discussionadd', function(req, res){
+  db.Club.findOneAndUpdate({_id: req.body.clubid},{"$push": { "discussions": req.body.discussionadd }})
 
-
+  .then(result => {
+    // console.log( "line 34", result);
+    res.send(result);
+  })
 });
 
 
