@@ -1,4 +1,5 @@
 import React from "react";
+import DiscussionItem from "../../components/BookClub/discussionItem";
 
 const BookClubPage = props => (
   <div className="rounded" id={props.clubId}>
@@ -13,15 +14,32 @@ const BookClubPage = props => (
 
     <div className="row">
       <div className="col s12 m12 rounded">
-        <p> All Discussion</p>
-        <div id="disc">{props.Discussion.forEach(function(each) {
-            // console.log(each)  
-           document.getElementById("disc").append(each)
-          
-          
-          }
-           )
-           }</div>
+      <br></br>
+        <h4> All Discussion</h4>
+        
+        {/* <div id="disc1" style={{display: "block"}}>
+        {props.Discussion.forEach(function(each) {
+            
+           document.getElementById("disc1").append(each)
+         
+            })
+           }</div> */}
+
+<div id="disc1">
+
+  {props.Discussion.map((element) =>{
+    return (
+// console.log(element)
+<DiscussionItem
+discId = {element} 
+discussion = {element}  />
+    );
+  })}
+</div>
+
+
+
+
       </div>
 
       <div className="col s12 m12 rounded">

@@ -49,16 +49,12 @@ class BookClub extends Component {
     this.setState({
       [name]: value
     });
-
-
-    
+    // document.getElementById("disc").innerHTML="";
   }
 
   discussionHandler = (event) => {
     event.preventDefault();
    
-    // alert("Hello! We will post the comment");
-
     let clubChangeData = {
       clubid: this.state.clubid,
       discussionadd: this.state.discussionadd

@@ -2,6 +2,7 @@ import React from "react";
 import "../styles.css";
 import myAPI from "../../utils/API";
 import SearchResultItem from "../../components/BookClub/searchResultItem";
+
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // import Button from './Button/Button';
@@ -83,13 +84,6 @@ export default class SearchClubForm extends React.Component {
 
   goToClub = (event, id) => {
 
-    // console.log(document.location.href)
-
-    // console.log("goToClub", id);
-
-    //if local store is a member o that club, then process to a route
-    //else local storage user not a member, alert ("not a member, join first!");
-
     let clubQuery = {
       clubid: id,
       useradd: localStorage.id_token
@@ -122,13 +116,6 @@ export default class SearchClubForm extends React.Component {
       )
       .catch(err => console.log(err));
   };
-
-
-
-
-
-
-
 
 
   handleSubmit(event) {
