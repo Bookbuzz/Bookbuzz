@@ -4,10 +4,7 @@ import axios from "axios"
 
 
 export default {
-    // search: function(query) {
-    //   return axios.get(BASEURL + query + APIKEY);
-    // },
-
+    
     getBooks: function() {
       return axios.get("/api/books/");
     },
@@ -28,6 +25,10 @@ export default {
     },
     searchAllClubs: function(data){
       return axios.post('/api/bookclubs/searchall', data);
+    },
+
+    searchAllClubs2: function(data){
+      return axios.post('/api/bookclubs/searchall2', data);
     }
     ,
     searchClubsByBook: function(info) {

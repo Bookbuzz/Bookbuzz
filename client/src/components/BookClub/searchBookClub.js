@@ -50,40 +50,39 @@ export default class SearchClubForm extends React.Component {
     // Here it should search all clubs and validate andf nest the line 57-61(updateclubs)  inside here
     myAPI
       .searchAllClubs(clubChangeData)
-      .then(res =>
-          (function(element) {
-          // console.log(element.clubMembers);
-          console.log(element);
+      .then(
+        res =>
+          function(element) {
+            // console.log(element.clubMembers);
+            console.log(element);
 
-          if (element.clubMembers.length < 1) {
-            alert("adding you to the club");
-            myAPI
-              .updateClubs(clubChangeData)
-              .then(res => console.log(res))
-              .catch(err => console.log(err));
-          }
-
-          element.clubMembers.forEach(function(e) {
-            console.log(e);
-            
-
-            if (localStorage.id_token === e) {
-              alert("You are already a member!");
-            } else {
-              alert("Adding you to the club");
+            if (element.clubMembers.length < 1) {
+              console.log("adding you to the club");
               myAPI
                 .updateClubs(clubChangeData)
                 .then(res => console.log(res))
                 .catch(err => console.log(err));
             }
-          });
-        })
+
+            element.clubMembers.forEach(function(e) {
+              console.log(e);
+
+              if (localStorage.id_token === e) {
+                console.log("You are already a member!");
+              } else {
+                console.log("Adding you to the club");
+                myAPI
+                  .updateClubs(clubChangeData)
+                  .then(res => console.log(res))
+                  .catch(err => console.log(err));
+              }
+            });
+          }
       )
       .catch(err => console.log(err));
   };
 
   goToClub = (event, id) => {
-
     let clubQuery = {
       clubid: id,
       useradd: localStorage.id_token
@@ -96,7 +95,7 @@ export default class SearchClubForm extends React.Component {
           console.log(element.clubMembers);
 
           if (element.clubMembers.length < 1) {
-            alert("Join the club first!");
+            console.log("Join the club first!");
             // console.log("102$$$",element.clubMembers.length )
           }
 
@@ -104,19 +103,16 @@ export default class SearchClubForm extends React.Component {
             console.log(e);
 
             if (clubQuery.useradd === e) {
-              alert("going to club page!!! woot woot");
+              console.log("going to club page!!! woot woot");
               // take to the club ID LINK and pass ID as props
-             
             } else {
-              alert("Join the club first!");
-             
+              console.log("Join the club first!");
             }
           });
         })
       )
       .catch(err => console.log(err));
   };
-
 
   handleSubmit(event) {
     event.preventDefault();
@@ -169,7 +165,7 @@ export default class SearchClubForm extends React.Component {
             meetingDate={club.meetingDate}
             action={this.addClubHandler}
             action_club={this.goToClub}
-            url={"/bookclub/" + club._id} 
+            url={"/bookclub/" + club._id}
           />
         );
       });
@@ -179,47 +175,46 @@ export default class SearchClubForm extends React.Component {
       <div>
         <div className="card">
           <div className="card-body">
-          <div className="text-center">
-          <h1> Search a Book Club</h1>
-          <br />
-        <form idname="searchClubForm" onSubmit={this.handleSubmit}>
-          <p>Please Write Full Club Name</p>
-          <p>tHingS arE CasE sEnsItIVe oUt here:</p>
-          <label>
-            Search Club Name: {"    "}
-            <input
-              type="text"
-              value={this.state.searchClubName}
-              onChange={this.handleChange}
-              name="searchClubName"
-            />
-          </label>
-          <br />
-          <label>
-            Search Club by Book:
-            <input
-              type="text"
-              value={this.state.searchByBookNameByBook}
-              onChange={this.handleChange}
-              name="searchByBookNameByBook"
-            />
-          </label>
-          <br />
+            <div className="text-center">
+              <h1> Search a Book Club</h1>
+              <br />
+              <form idname="searchClubForm" onSubmit={this.handleSubmit}>
+                <p>Please Write Full Club Name</p>
+                <p>tHingS arE CasE sEnsItIVe oUt here:</p>
+                <label>
+                  Search Club Name: {"    "}
+                  <input
+                    type="text"
+                    value={this.state.searchClubName}
+                    onChange={this.handleChange}
+                    name="searchClubName"
+                  />
+                </label>
+                <br />
+                <label>
+                  Search Club by Book:
+                  <input
+                    type="text"
+                    value={this.state.searchByBookNameByBook}
+                    onChange={this.handleChange}
+                    name="searchByBookNameByBook"
+                  />
+                </label>
+                <br />
 
-          <br />
+                <br />
 
-          <input
-            type="submit"
-            value="Submit"
-            className="btn buttonClubCreate"
-          />
-        </form>
-        <div id="display_clubs" className="row" />
-        {searched}
-        </div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="btn buttonClubCreate"
+                />
+              </form>
+              <div id="display_clubs" className="row" />
+              {searched}
+            </div>
           </div>
         </div>
-        
       </div>
     );
   }

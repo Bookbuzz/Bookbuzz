@@ -11,6 +11,7 @@ class Profile extends Component {
 
   componentDidMount() {
     this.getBooksHandler();
+    this.getClubAndUSer();
   }
 
   getBooksHandler() {
@@ -27,12 +28,61 @@ class Profile extends Component {
       .catch(err => console.log(err));
   };
 
+  getClubAndUSer() {
+    myAPI
+    .searchAllClubs2()
+    .then(res =>
+      console.log(res.data)
+        // .forEach(function(e) {
+
+
+
+
+        //   e.clubMembers.forEach(function(user){
+
+        //     console.log(user);
+
+        //     if (user === localStorage.id_token){
+        //       //change the state of 
+        //       //show the club name on the page
+
+
+
+        //       // res.data.forEach(function (club){
+        //       //   console.log(club)
+        //       // })
+
+
+
+
+        //     }
+        //   })
+
+
+
+
+
+
+
+
+
+
+        // })
+
+    
+        
+    ).catch(err => console.log(err))
+  }
+
   render() {
+
+
     let saved = <p className="text-center">There are no books saved! Go to Search Book page to find a book of your choice</p>;
+
 
     if (this.state.savedBooks.length > 0) {
       saved = this.state.savedBooks.map((book, index) => {
-        console.log(book);
+        // console.log(book);
         return (
 
           <BookScraped
@@ -50,7 +100,7 @@ class Profile extends Component {
       });
     }
 
-    let savedClubs = <p className="text-center"> No Clubs Saved, go to BookClubs page to search, create and join a book club</p>
+
 
     return (
       <div>
@@ -66,6 +116,8 @@ class Profile extends Component {
             {savedClubs}
           </div>
 
+
+
         </div>
 
         <br />
@@ -73,6 +125,7 @@ class Profile extends Component {
         <div className="card">
         <div  className="card-body">
         <h1 className="text-center">Saved Books</h1>
+
         <br />
         {saved}
         </div>

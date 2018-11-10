@@ -71,7 +71,7 @@ class Search extends Component {
       preview: book.accessInfo.webReaderLink,
       URL: thumbnailCheck(book)
     })
-      .then(res => alert('Book saved successfully!'))
+      .then(res => console.log('Book saved successfully!'))
       .catch(err => console.log(err));
   }
 

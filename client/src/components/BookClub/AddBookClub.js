@@ -29,7 +29,7 @@ export default class NameForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(
+    console.log(
       "' book club name was submitted: " +
       this.state.clubName +
       " book name " +
